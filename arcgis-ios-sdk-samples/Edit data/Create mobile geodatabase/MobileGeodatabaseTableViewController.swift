@@ -21,23 +21,6 @@ class MobileGeodatabaseTableViewController: UITableViewController {
     // An array to store all the features' time stamps.
     var collectionTimeStamps = [Date]()
     
-    // MARK: Initializers
-    
-    init?(
-        coder: NSCoder,
-        oidArray: [Int],
-        collectionTimeStamps: [Date]
-    ) {
-        self.oidArray = oidArray
-        self.collectionTimeStamps = collectionTimeStamps
-        super.init(coder: coder)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
             dismiss(animated: true)
     }

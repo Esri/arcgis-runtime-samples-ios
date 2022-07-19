@@ -34,9 +34,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KS2-SB-uqN"/>
                                     <barButtonItem enabled="NO" title="View table" style="plain" id="C1e-u4-8wu">
                                         <connections>
-                                            <segue destination="O8q-YG-sIH" kind="popoverPresentation" popoverAnchorBarButtonItem="C1e-u4-8wu" id="yMR-wl-p3h">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <action selector="queryFeatures" destination="Y6W-OH-hqX" id="gKm-88-A3J"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="puA-i6-0My"/>
@@ -75,28 +73,12 @@
             </objects>
             <point key="canvasLocation" x="139" y="64"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hPt-gH-iAH">
-            <objects>
-                <navigationController id="O8q-YG-sIH" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e29-w4-j9U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6E4-bY-fgh" kind="relationship" relationship="rootViewController" id="14e-jW-Vw0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LoI-Np-jTg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="899" y="64"/>
-        </scene>
         <!--Feature table-->
         <scene sceneID="ptX-u7-R4X">
             <objects>
-                <tableViewController id="6E4-bY-fgh" customClass="MobileGeodatabaseTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MobileGeodatabase" id="6E4-bY-fgh" customClass="MobileGeodatabaseTableViewController" customModule="ArcGIS_Runtime_SDK_Samples" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="duz-WR-xhA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <prototypes>

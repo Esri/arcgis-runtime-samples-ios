@@ -48,9 +48,9 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         temporaryGeodatabaseURL = temporaryDirectory
             .appendingPathComponent("LocationHistory", isDirectory: false)
             .appendingPathExtension("geodatabase")
+        super.init(coder: coder)
         // Create the initial geodatabase.
         createGeodatabase()
-        super.init(coder: coder)
     }
     
     // MARK: Methods
@@ -69,6 +69,27 @@ class CreateMobileGeodatabaseViewController: UIViewController {
                 self?.resetMap()
             } else if let error = activityError {
                 self?.presentAlert(error: error)
+            }
+        }
+    }
+    
+    /// Query features when the "View table" button is tapped.
+    @IBAction func queryFeatures() {
+        guard let featureTable = featureTable else { return }
+        featureTable.queryFeatures(with: AGSQueryParameters()) { [weak self] results, error in
+            guard let self = self else { return }
+            if let results = results {
+                let features = results.featureEnumerator().allObjects
+                // Instantiate the table view controller.
+                let tableViewController = self.storyboard!.instantiateViewController(withIdentifier: "MobileGeodatabase") as! MobileGeodatabaseTableViewController
+                
+                // Create an array of each feature's OID.
+                tableViewController.oidArray = features.compactMap { $0.attributes["oid"] as? Int }
+                // Create an array of each feature's time stamps.
+                tableViewController.collectionTimeStamps = features.compactMap { $0.attributes["collection_timestamp"] as? Date }
+                self.present(tableViewController, animated: true)
+            } else if let error = error {
+                self.presentAlert(error: error)
             }
         }
     }
@@ -162,24 +183,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     }
     
     // MARK: UIViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let navigationController = segue.destination as? UINavigationController,
-           let controller = navigationController.topViewController as? MobileGeodatabaseTableViewController {
-            // Query features to list the existing features.
-            featureTable?.queryFeatures(with: AGSQueryParameters()) { [weak self] results, error in
-                guard let self = self else { return }
-                if let results = results {
-                    let features = results.featureEnumerator().allObjects
-                    // Create an array of each feature's OID.
-                    controller.oidArray = features.compactMap { $0.attributes["oid"] as? Int }
-                    // Create an array of each feature's time stamps.
-                    controller.collectionTimeStamps = features.compactMap { $0.attributes["collection_timestamp"] as? Date }
-                } else if let error = error {
-                    self.presentAlert(error: error)
-                }
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

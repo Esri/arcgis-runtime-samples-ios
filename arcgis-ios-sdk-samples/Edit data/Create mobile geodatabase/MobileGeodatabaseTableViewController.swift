@@ -17,9 +17,9 @@ import ArcGIS
 
 class MobileGeodatabaseTableViewController: UITableViewController {
     // An array to hold all the features' OIDs.
-    var oidArray = [Int]()
+    var oidArray: [Int] = []
     // An array to store all the features' time stamps.
-    var collectionTimeStamps = [Date]()
+    var collectionTimeStamps: [Date] = []
     // Create a formatter for the date.
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()

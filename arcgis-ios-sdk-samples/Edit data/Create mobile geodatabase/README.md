@@ -19,7 +19,7 @@ Tap on the map to add a feature symbolizing the user's location. Tap "View table
 
 1. Create the `AGSGeodatabase` from the mobile geodatabase location on file.
 2. Create a new `AGSTableDescription` and add the list of `AGSFieldDescription`s to the table description.
-3. Create a `AGSGeodatabaseFeatureTable` in the geodatabase from the `AGSTableDescription` using `AGSGeodatabase.createTable(with:completion:)`.
+3. Create an `AGSGeodatabaseFeatureTable` in the geodatabase from the `AGSTableDescription` using `AGSGeodatabase.createTable(with:completion:)`.
 4. Create a feature on the selected map point using `AGSGeodatabaseFeatureTable.createFeature(attributes:geometry:)`.
 5. Add the feature to the table using `AGSGeodatabaseFeatureTable.add(_:completion:)`.
 6. Each feature added to the `AGSGeodatabaseFeatureTable` is committed to the mobile geodatabase file.

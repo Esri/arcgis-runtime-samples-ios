@@ -49,8 +49,6 @@ class CreateMobileGeodatabaseViewController: UIViewController {
             .appendingPathComponent("LocationHistory", isDirectory: false)
             .appendingPathExtension("geodatabase")
         super.init(coder: coder)
-        // Create the initial geodatabase.
-        createGeodatabase()
     }
     
     // MARK: Methods
@@ -107,23 +105,9 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         AGSGeodatabase.create(withFileURL: temporaryGeodatabaseURL) { [weak self] result, error in
             guard let self = self else { return }
             self.geodatabase = result
-            // Create a description for the feature table.
-            let tableDescription = AGSTableDescription(name: "LocationHistory", spatialReference: .wgs84(), geometryType: .point)
-            // Create and add the description fields for the table.z
-            // `AGSFieldType.OID` is the primary key of the SQLite table.
-            // `AGSFieldType.DATE` is a date column used to store a Calendar date.
-            // `AGSFieldDescription`s can be a SHORT, INTEGER, GUID, FLOAT, DOUBLE, DATE, TEXT, OID, GLOBALID, BLOB, GEOMETRY, RASTER, or XML.
-            let fieldDescriptions = [
-                AGSFieldDescription(name: "oid", fieldType: .OID),
-                AGSFieldDescription(name: "collection_timestamp", fieldType: .date)
-            ]
-            tableDescription.fieldDescriptions.addObjects(from: fieldDescriptions)
-            // Set any unnecessary properties to false.
-            tableDescription.hasAttachments = false
-            tableDescription.hasM = false
-            tableDescription.hasZ = false
+            
             // Add a new table to the geodatabase by creating one from the table description.
-            self.geodatabase?.createTable(with: tableDescription) { table, error in
+            self.geodatabase?.createTable(with: self.makeTableDescription()) { table, error in
                 if let table = table {
                     // Load the table.
                     table.load { _ in
@@ -141,11 +125,31 @@ class CreateMobileGeodatabaseViewController: UIViewController {
         }
     }
     
+    /// Make an `AGSTableDescription` for the geodatabase.
+    func makeTableDescription() -> AGSTableDescription {
+        // Create a description for the feature table.
+        let tableDescription = AGSTableDescription(name: "LocationHistory", spatialReference: .wgs84(), geometryType: .point)
+        // Create and add the description fields for the table.z
+        // `AGSFieldType.OID` is the primary key of the SQLite table.
+        // `AGSFieldType.DATE` is a date column used to store a Calendar date.
+        // `AGSFieldDescription`s can be a SHORT, INTEGER, GUID, FLOAT, DOUBLE, DATE, TEXT, OID, GLOBALID, BLOB, GEOMETRY, RASTER, or XML.
+        let fieldDescriptions = [
+            AGSFieldDescription(name: "oid", fieldType: .OID),
+            AGSFieldDescription(name: "collection_timestamp", fieldType: .date)
+        ]
+        tableDescription.fieldDescriptions.addObjects(from: fieldDescriptions)
+        // Set any unnecessary properties to false.
+        tableDescription.hasAttachments = false
+        tableDescription.hasM = false
+        tableDescription.hasZ = false
+        return tableDescription
+    }
+    
     /// Add a feature at the provided map point.
     func addFeature(at mapPoint: AGSPoint) {
+        guard let featureTable = featureTable else { return }
         // Create an attribute with the current date.
         let attributes = ["collection_timestamp": Date()]
-        guard let featureTable = featureTable else { return }
         // Create a feature with the created attribute and geometry.
         let feature = featureTable.createFeature(attributes: attributes, geometry: mapPoint)
         // Add the feature to the feature table.
@@ -185,6 +189,8 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Create the initial geodatabase.
+        createGeodatabase()
         // Add the source code button item to the right of navigation bar.
         (navigationItem.rightBarButtonItem as? SourceCodeBarButtonItem)?.filenames = [
             "CreateMobileGeodatabaseViewController",

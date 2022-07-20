@@ -73,6 +73,22 @@
             </objects>
             <point key="canvasLocation" x="139" y="64"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fgw-In-9YM">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationController" id="9Xl-Ex-fMB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Qy-vf-7qh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6E4-bY-fgh" kind="relationship" relationship="rootViewController" id="nGT-wG-eqM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eb4-dX-bJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878" y="64"/>
+        </scene>
         <!--Feature table-->
         <scene sceneID="ptX-u7-R4X">
             <objects>

@@ -76,18 +76,17 @@ class CreateMobileGeodatabaseViewController: UIViewController {
     /// Query features when the "View table" button is tapped.
     @IBAction func queryFeatures() {
         guard let featureTable = featureTable else { return }
+        let navigationController = storyboard!.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+        let mobileGeodatabaseController = navigationController.viewControllers.first as! MobileGeodatabaseTableViewController
         featureTable.queryFeatures(with: AGSQueryParameters()) { [weak self] results, error in
             guard let self = self else { return }
             if let results = results {
                 let features = results.featureEnumerator().allObjects
-                // Instantiate the table view controller.
-                let tableViewController = self.storyboard!.instantiateViewController(withIdentifier: "MobileGeodatabase") as! MobileGeodatabaseTableViewController
-                
                 // Create an array of each feature's OID.
-                tableViewController.oidArray = features.compactMap { $0.attributes["oid"] as? Int }
+                mobileGeodatabaseController.oidArray = features.compactMap { $0.attributes["oid"] as? Int }
                 // Create an array of each feature's time stamps.
-                tableViewController.collectionTimeStamps = features.compactMap { $0.attributes["collection_timestamp"] as? Date }
-                self.present(tableViewController, animated: true)
+                mobileGeodatabaseController.collectionTimeStamps = features.compactMap { $0.attributes["collection_timestamp"] as? Date }
+                self.present(navigationController, animated: true)
             } else if let error = error {
                 self.presentAlert(error: error)
             }

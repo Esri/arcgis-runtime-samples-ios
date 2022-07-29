@@ -40,6 +40,8 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     
     /// Evaluate the Arcade expression for the selected feature at the map point.
     func evaluateArcadeInCallout(for feature: AGSArcGISFeature, at mapPoint: AGSPoint) {
+        guard let map = mapView.map else { return }
+        evaluateOperation?.cancel()
         // Instantiate a string containing the Arcade expression.
         let expressionValue =
         """
@@ -49,18 +51,17 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
         // Create an Arcade expression using the string.
         let expression = AGSArcadeExpression(expression: expressionValue)
         // Create an Arcade evaluator with the Arcade expression and an Arcade profile.
-        let evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
-        guard let map = mapView.map else { return }
+        evaluator = AGSArcadeEvaluator(expression: expression, profile: .formCalculation)
         let profileVariables = ["$feature": feature, "$map": map]
-        evaluateOperation?.cancel()
         // Show progress hud.
         UIApplication.shared.showProgressHUD(message: "Evaluating")
         // Get the Arcade evaluation result given the previously set profile variables.
-        evaluateOperation = evaluator.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
+        evaluateOperation = evaluator!.evaluate(withProfileVariables: profileVariables) { [weak self] result, error in
             // Dismiss progress hud.
             UIApplication.shared.hideProgressHUD()
             guard let self = self else { return }
             self.evaluateOperation = nil
+            self.evaluator = nil
             if let result = result, let crimeCount = result.cast(to: .string) as? String {
                 self.mapView.setViewpointCenter(mapPoint)
                 // Hide the accessory button.

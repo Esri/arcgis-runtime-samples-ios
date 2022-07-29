@@ -5293,6 +5293,7 @@
 		};
 		3ED029A21B8E5D4D00ACA70D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -5306,6 +5307,7 @@
 		};
 		4CB506D1224C2C20006A3471 /* Download Portal Item Data */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -5326,6 +5328,7 @@
 		};
 		4CBDB3192190E88F006E5D39 /* Lint Code */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

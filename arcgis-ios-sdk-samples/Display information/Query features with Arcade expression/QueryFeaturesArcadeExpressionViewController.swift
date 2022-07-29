@@ -26,7 +26,9 @@ class QueryFeaturesArcadeExpressionViewController: UIViewController {
     
     /// The Arcade expression evaluation operation.
     var evaluateOperation: AGSCancelable?
-    
+    /// The evaluator to evaluate an `AGSArcadeExpression` under a given
+    /// `AGSArcadeProfile`.
+    var evaluator: AGSArcadeEvaluator?
     /// Make and load a map.
     func makeMap() -> AGSMap {
         // Create a portal item with the portal and item ID.

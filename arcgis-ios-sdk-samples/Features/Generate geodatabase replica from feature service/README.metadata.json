@@ -1,14 +1,15 @@
 {
     "category": "Features",
-    "description": "Generate a local geodatabase from an online feature service.",
+    "description": "Generate a local geodatabase replica from an online feature service.",
     "ignore": false,
     "images": [
-        "generate-geodatabase.png"
+        "generate-geodatabase-replica-from-feature-service.png"
     ],
     "keywords": [
         "disconnected",
         "local geodatabase",
         "offline",
+        "replica",
         "sync",
         "AGSGenerateGeodatabaseJob",
         "AGSGenerateGeodatabaseParameters",
@@ -16,7 +17,8 @@
         "AGSGeodatabaseSyncTask"
     ],
     "redirect_from": [
-        "/ios/latest/swift/sample-code/generate-geodatabase.htm"
+        "/ios/latest/swift/sample-code/generate-geodatabase.htm",
+        "/ios/swift/sample-code/generate-geodatabase/"
     ],
     "relevant_apis": [
         "AGSGenerateGeodatabaseJob",

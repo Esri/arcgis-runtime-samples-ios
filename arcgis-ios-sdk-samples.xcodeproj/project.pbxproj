@@ -3191,13 +3191,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3EC39C381C9B2136003F6459 /* Generate geodatabase */ = {
+		3EC39C381C9B2136003F6459 /* Generate geodatabase replica from feature service */ = {
 			isa = PBXGroup;
 			children = (
 				3EC39C391C9B23DF003F6459 /* GenerateGeodatabase.storyboard */,
 				3EC39C3B1C9B241F003F6459 /* GenerateGeodatabaseViewController.swift */,
 			);
-			path = "Generate geodatabase";
+			path = "Generate geodatabase replica from feature service";
 			sourceTree = "<group>";
 		};
 		3EC39C3D1C9B4754003F6459 /* Offline edit and sync */ = {
@@ -3278,7 +3278,7 @@
 				3ED028C61B8E3AA500ACA70D /* Feature layer query */,
 				3ED028C01B8E3AA500ACA70D /* Filter by definition expression or display filter */,
 				3ED028BA1B8E3AA500ACA70D /* Change feature layer renderer */,
-				3EC39C381C9B2136003F6459 /* Generate geodatabase */,
+				3EC39C381C9B2136003F6459 /* Generate geodatabase replica from feature service */,
 				3EFDE0EF1E36ABB700CBCD92 /* Feature collection layer */,
 				3EFDE0F21E36ABB700CBCD92 /* Feature collection layer (query) */,
 				3EEB2B931EB9695F00B52513 /* List related features */,

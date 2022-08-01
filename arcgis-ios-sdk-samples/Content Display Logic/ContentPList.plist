@@ -871,11 +871,11 @@
 			</dict>
 			<dict>
 				<key>displayName</key>
-				<string>Generate geodatabase</string>
+				<string>Generate geodatabase replica from feature service</string>
 				<key>storyboardName</key>
 				<string>GenerateGeodatabase</string>
 				<key>descriptionText</key>
-				<string>Generate a local geodatabase from an online feature service.</string>
+				<string>Generate a local geodatabase replica from an online feature service.</string>
 				<key>dependency</key>
 				<array>
 					<string>SanFranciscoTilePackage</string>

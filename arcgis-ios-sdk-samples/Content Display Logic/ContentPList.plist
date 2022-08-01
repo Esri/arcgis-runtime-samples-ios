@@ -1491,6 +1491,7 @@
 				<key>dependency</key>
 				<array>
 					<string>SanDiegoDetour</string>
+					<string>SanDiegoNetworkData</string>
 				</array>
 			</dict>
 			<dict>

@@ -29,5 +29,5 @@
     "snippets": [
         "GenerateGeodatabaseViewController.swift"
     ],
-    "title": "Generate geodatabase"
+    "title": "Generate geodatabase replica from feature service"
 }

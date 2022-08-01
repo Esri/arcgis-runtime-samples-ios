@@ -28,7 +28,7 @@ Tap on a feature in the map. All features within a given tolerance (in pixels) o
 
 ## About the data
 
-This sample uses the [Gross Domestic Product, 1960-2016](https://www.arcgis.com/home/item.html?id=0c4b6b70a56b40b08c5b0420c570a6ac) feature service. Only the 2016 GDP values are shown.
+This sample uses the [Gross Domestic Product Per Capita, 1960-2016](https://www.arcgis.com/home/item.html?id=10d76a5b015647279b165f3a64c2524f) feature service. Only the 2016 GDP values are shown.
 
 ## Tags
 

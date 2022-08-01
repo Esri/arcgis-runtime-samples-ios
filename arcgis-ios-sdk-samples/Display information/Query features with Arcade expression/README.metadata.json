@@ -1,0 +1,35 @@
+{
+    "category": "Display information",
+    "description": "Query features on a map using an Arcade expression.",
+    "ignore": false,
+    "images": [
+        "query-features-arcade-expression.png"
+    ],
+    "keywords": [
+        "Arcade evaluator",
+        "Arcade expression",
+        "identify layers",
+        "portal",
+        "portal item",
+        "query",
+        "AGSArcadeEvaluationResult",
+        "AGSArcadeEvaluator",
+        "AGSArcadeExpression",
+        "AGSArcadeProfile",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "redirect_from": [],
+    "relevant_apis": [
+        "AGSArcadeEvaluationResult",
+        "AGSArcadeEvaluator",
+        "AGSArcadeExpression",
+        "AGSArcadeProfile",
+        "AGSPortal",
+        "AGSPortalItem"
+    ],
+    "snippets": [
+        "QueryFeaturesArcadeExpressionViewController.swift"
+    ],
+    "title": "Query features with Arcade expression"
+}

@@ -1114,6 +1114,14 @@
 				<key>storyboardName</key>
 				<string>FilterByTimeExtent</string>
 			</dict>
+			<dict>
+				<key>displayName</key>
+				<string>Query features with Arcade expression</string>
+				<key>descriptionText</key>
+				<string>Query features on a map using an Arcade expression.</string>
+				<key>storyboardName</key>
+				<string>QueryFeaturesArcadeExpression</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

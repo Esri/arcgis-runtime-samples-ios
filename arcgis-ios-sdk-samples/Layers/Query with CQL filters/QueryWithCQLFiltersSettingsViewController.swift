@@ -63,12 +63,12 @@ class QueryWithCQLFiltersSettingsViewController: UITableViewController {
         // A cql-text query.
         "F_CODE = 'AP010'",
         // A cql-json query.
-        #"{"eq":[{"property":"F_CODE"},"AP010"]}"#,
+        #"{ "op": "=", "args": [ { "property": "F_CODE" }, "AP010" ] }"#,
         // Sample Query 2: Features with an F_CODE property matching the pattern.
         "F_CODE LIKE 'AQ%'",
         // Sample Query 3: Use cql-json to combine "before" and "eq" operators
         // with the logical "and" operator.
-        #"{"and":[{"eq":[{"property":"F_CODE"},"AP010"]},{"before":[{"property":"ZI001_SDV"},"2013-01-01"]}]}"#
+        #"{"op": "and", "args":[{ "op": "=", "args":[{ "property" : "F_CODE" }, "AP010"]}, { "op": "t_before", "args":[{ "property" : "ZI001_SDV"},"2013-01-01"]}]}"#
     ]
     var selectedWhereClause: String = ""
     var maxFeatures: NSNumber = 1_000

@@ -38,7 +38,7 @@ class NavigateRouteWithReroutingViewController: UIViewController {
     // MARK: Instance properties
     
     /// The route task to solve the route between stops, using the online routing service.
-    let routeTask = AGSRouteTask(databaseName: "sandiego", networkName: "Streets_ND")
+    let routeTask = AGSRouteTask(fileURLToDatabase: Bundle.main.url(forResource: "sandiego", withExtension: "geodatabase", subdirectory: "san-diego")!, networkName: "Streets_ND")
     /// The route result solved by the route task.
     var routeResult: AGSRouteResult!
     /// The route tracker for navigation. Use delegate methods to update tracking status.

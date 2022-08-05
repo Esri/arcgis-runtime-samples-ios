@@ -14,7 +14,6 @@
         "query",
         "restrict data",
         "where clause",
-        "AGSDefinitionExpression",
         "AGSFeatureLayer",
         "AGSServiceFeatureTable"
     ],
@@ -22,7 +21,6 @@
         "/ios/latest/swift/sample-code/feature-layer-definition-expression.htm"
     ],
     "relevant_apis": [
-        "AGSDefinitionExpression",
         "AGSFeatureLayer",
         "AGSServiceFeatureTable"
     ],

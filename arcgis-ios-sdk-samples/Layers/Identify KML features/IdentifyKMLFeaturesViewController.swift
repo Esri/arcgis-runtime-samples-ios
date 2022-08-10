@@ -75,7 +75,7 @@ class IdentifyKMLFeaturesViewController: UIViewController {
 extension IdentifyKMLFeaturesViewController: AGSGeoViewTouchDelegate {
     func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
         geoView.callout.dismiss()
-        geoView.identifyLayer(forecastLayer, screenPoint: screenPoint, tolerance: 15, returnPopupsOnly: false) { [weak self] (result) in
+        geoView.identifyLayer(forecastLayer, screenPoint: screenPoint, tolerance: 2, returnPopupsOnly: false) { [weak self] (result) in
             if let placemark = result.geoElements.first as? AGSKMLPlacemark {
                 // Google Earth only displays the placemarks with description
                 // or extended data. To match its behavior, add a description

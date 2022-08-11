@@ -30,6 +30,8 @@ class CutGeometryViewController: UIViewController {
         }
     }
     
+    // MARK: Instance properties
+    
     /// A Boolean value indicating whether the geometry is cut.
     var isGeometryCut = false
     
@@ -130,8 +132,10 @@ class CutGeometryViewController: UIViewController {
     /// The graphics overlay containing cut graphics.
     let cutGraphicsOverlay = AGSGraphicsOverlay()
     
+    // MARK: Actions
+    
     /// Cuts geometry and adds resulting graphics.
-    private func cutGeometry() {
+    func cutGeometry() {
         // Cuts the Lake Superior polygon using the border polyline.
         guard let parts = AGSGeometryEngine.cut(lakeSuperiorPolygonGraphic.geometry!, withCutter: borderPolylineGraphic.geometry as! AGSPolyline),
               parts.count == 2,
@@ -147,7 +151,7 @@ class CutGeometryViewController: UIViewController {
     }
     
     /// Removes all cut graphics.
-    private func reset() {
+    func reset() {
         cutGraphicsOverlay.graphics.removeAllObjects()
     }
     
@@ -157,6 +161,8 @@ class CutGeometryViewController: UIViewController {
         // Set button title based on whether the geometry is cut.
         sender.title = isGeometryCut ? "Reset" : "Cut"
     }
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()

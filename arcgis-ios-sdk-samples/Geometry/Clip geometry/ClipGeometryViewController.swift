@@ -26,7 +26,7 @@ class ClipGeometryViewController: UIViewController {
             // Add the graphics overlays to the map view.
             mapView.graphicsOverlays.addObjects(from: [coloradoGraphicsOverlay, envelopesGraphicsOverlay, clippedGraphicsOverlay])
             // Set the viewpoint to the extent of the Colorado geometry.
-            mapView.setViewpointGeometry(coloradoGraphic.geometry!, padding: 200)
+            mapView.setViewpointGeometry(coloradoGraphic.geometry!, padding: 100)
         }
     }
     

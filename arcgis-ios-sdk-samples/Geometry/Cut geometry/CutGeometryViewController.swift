@@ -134,19 +134,19 @@ class CutGeometryViewController: UIViewController {
     
     // MARK: Actions
     
-    /// Cuts geometry and adds resulting graphics.
+    /// Cut geometry and add resulting graphics.
     func cutGeometry() {
-        // Cuts the Lake Superior polygon using the border polyline.
+        // Cut the Lake Superior polygon using the border polyline.
         guard let parts = AGSGeometryEngine.cut(lakeSuperiorPolygonGraphic.geometry!, withCutter: borderPolylineGraphic.geometry as! AGSPolyline),
               parts.count == 2,
               let firstPart = parts.first,
               let secondPart = parts.last else {
             return
         }
-        // Creates the graphics for the Canadian and USA sides of Lake Superior.
+        // Create the graphics for the Canadian and USA sides of Lake Superior.
         let canadaSideGraphic = AGSGraphic(geometry: firstPart, symbol: AGSSimpleFillSymbol(style: .backwardDiagonal, color: .green, outline: nil))
         let usaSideGraphic = AGSGraphic(geometry: secondPart, symbol: AGSSimpleFillSymbol(style: .forwardDiagonal, color: .yellow, outline: nil))
-        // Adds the graphics to the graphics overlay.
+        // Add the graphics to the graphics overlay.
         cutGraphicsOverlay.graphics.addObjects(from: [canadaSideGraphic, usaSideGraphic])
     }
     

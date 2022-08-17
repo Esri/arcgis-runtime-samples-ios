@@ -22,12 +22,11 @@ The feature count value shows the current number of features in the current map 
 
 1. Create an `AGSServiceFeatureTable` from a URL.
 2. Create an `AGSFeatureLayer` from the service feature table.
-3. Filter features on your feature layer using an `AGSDefinitionExpression` to view a subset of features and modify the attribute table.
+3. Filter features on your feature layer using an definition expression to view a subset of features and modify the attribute table.
 4. Filter features on your feature layer using an `AGSDisplayFilterDefinition` to view a subset of features without modifying the attribute table.
 
 ## Relevant API
 
-* AGSDefinitionExpression
 * AGSFeatureLayer
 * AGSServiceFeatureTable
 

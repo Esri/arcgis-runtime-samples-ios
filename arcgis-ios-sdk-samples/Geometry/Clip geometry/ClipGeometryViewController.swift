@@ -16,14 +16,67 @@ import UIKit
 import ArcGIS
 
 class ClipGeometryViewController: UIViewController {
-    @IBOutlet weak var mapView: AGSMapView!
+    // MARK: Storyboard views
+    
+    /// The map view managed by the view controller.
+    @IBOutlet var mapView: AGSMapView! {
+        didSet {
+            // Create a map with a topographic basemap.
+            mapView.map = AGSMap(basemapStyle: .arcGISTopographic)
+            // Add the graphics overlays to the map view.
+            mapView.graphicsOverlays.addObjects(from: [coloradoGraphicsOverlay, envelopesGraphicsOverlay, clippedGraphicsOverlay])
+            // Set the viewpoint to the extent of the Colorado geometry.
+            mapView.setViewpointGeometry(coloradoGraphic.geometry!, padding: 100)
+        }
+    }
+    
+    // MARK: Instance properties
+    
+    /// A Boolean value indicating whether the geometries are clipped.
+    private var geometriesAreClipped = false
+    
+    /// The unclipped graphic of Colorado.
+    private var coloradoGraphic: AGSGraphic {
+        coloradoGraphicsOverlay.graphics.firstObject as! AGSGraphic
+    }
     
     /// The overlay for displaying the graphic of Colorado.
-    private let coloradoOverlay = AGSGraphicsOverlay()
+    private let coloradoGraphicsOverlay: AGSGraphicsOverlay = {
+        // An envelope approximating the boundary of Colorado.
+        let coloradoGeometry = AGSEnvelope(
+            xMin: -11362327.128340,
+            yMin: 5012861.290274,
+            xMax: -12138232.018408,
+            yMax: 4441198.773776,
+            spatialReference: .webMercator()
+        )
+        
+        // A semi-transparent blue color for the fill.
+        let fillColor = UIColor.blue.withAlphaComponent(0.2)
+        
+        // The fill symbol for displaying Colorado.
+        let fillSymbol = AGSSimpleFillSymbol(
+            style: .solid,
+            color: fillColor,
+            outline: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2)
+        )
+        
+        // Create a graphic from the geometry and symbol representing Colorado.
+        let coloradoGraphic = AGSGraphic(geometry: coloradoGeometry, symbol: fillSymbol)
+        
+        // Create a graphics overlay.
+        let coloradoGraphicsOverlay = AGSGraphicsOverlay()
+        // Add the Colorado graphic to its overlay.
+        coloradoGraphicsOverlay.graphics.add(coloradoGraphic)
+        return coloradoGraphicsOverlay
+    }()
+    
+    /// The graphics overlay containing clipped graphics.
+    private let clippedGraphicsOverlay = AGSGraphicsOverlay()
     
     /// The overlay for displaying the other envelopes.
-    private let envelopesOverlay: AGSGraphicsOverlay = {
-        /// An envelope outside Colorado.
+    private let envelopesGraphicsOverlay: AGSGraphicsOverlay = {
+        // An envelope outside Colorado.
         let outsideEnvelope = AGSEnvelope(
             xMin: -11858344.321294,
             yMin: 5147942.225174,
@@ -32,7 +85,7 @@ class ClipGeometryViewController: UIViewController {
             spatialReference: .webMercator()
         )
         
-        /// An envelope intersecting Colorado.
+        // An envelope intersecting Colorado.
         let intersectingEnvelope = AGSEnvelope(
             xMin: -11962086.479298,
             yMin: 4566553.881363,
@@ -41,7 +94,7 @@ class ClipGeometryViewController: UIViewController {
             spatialReference: .webMercator()
         )
         
-        /// An envelope inside Colorado.
+        // An envelope inside Colorado.
         let containedEnvelope = AGSEnvelope(
             xMin: -11655182.595204,
             yMin: 4741618.772994,
@@ -50,85 +103,63 @@ class ClipGeometryViewController: UIViewController {
             spatialReference: .webMercator()
         )
         
-        /// A dotted red outline symbol.
+        // A dotted red outline symbol.
         let redOutline = AGSSimpleLineSymbol(style: .dot, color: .red, width: 3)
         
-        /// The envelopes in the order we want to display them.
+        // The envelopes in the order we want to display them.
         let envelopes = [outsideEnvelope, intersectingEnvelope, containedEnvelope]
         
-        /// The graphics for the envelopes with the red outline symbol.
+        // The graphics for the envelopes with the red outline symbol.
         let graphics = envelopes.map { AGSGraphic(geometry: $0, symbol: redOutline) }
-       
+        
         let envelopesOverlay = AGSGraphicsOverlay()
-        // add the graphics to the overlay
+        // Add the graphics to the overlay.
         envelopesOverlay.graphics.addObjects(from: graphics)
         return envelopesOverlay
     }()
     
-    /// The graphic representing Colorado.
-    private let coloradoGraphic: AGSGraphic = {
-        /// An envelope approximating the boundary of Colorado.
-        let coloradoGeometry = AGSEnvelope(
-            xMin: -11362327.128340,
-            yMin: 5012861.290274,
-            xMax: -12138232.018408,
-            yMax: 4441198.773776,
-            spatialReference: .webMercator())
-        
-        /// A semi-transparent blue color for the fill.
-        let fillColor = UIColor.blue.withAlphaComponent(0.2)
-        /// The fill symbol for displaying Colorado.
-        let fillSymbol = AGSSimpleFillSymbol(
-            style: .solid,
-            color: fillColor,
-            outline: AGSSimpleLineSymbol(style: .solid, color: .blue, width: 2)
-        )
-        // create a graphic from the geometry and symbol
-        return AGSGraphic(geometry: coloradoGeometry, symbol: fillSymbol)
-    }()
+    // MARK: Actions
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    /// Clip geometries and add resulting graphics.
+    private func clipGeometries() {
+        // Hides the Colorado graphic.
+        coloradoGraphic.isVisible = false
         
-        // add the source code button item to the right of navigation bar
-        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ClipGeometryViewController"]
+        let coloradoGeometry = coloradoGraphic.geometry!
+        let coloradoSymbol = coloradoGraphic.symbol!
         
-        // instantiate map using a basemap
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        // assign the map to the map view
-        mapView.map = map
-        
-        // add the Colorado graphic to its overlay
-        coloradoOverlay.graphics.add(coloradoGraphic)
-
-        // add the graphics overlays to the map view in the order we want them to appear
-        mapView.graphicsOverlays.addObjects(from: [coloradoOverlay, envelopesOverlay])
-        
-        // set the initial viewpoint to the extent of the Colorado geometry, plus a margin
-        mapView.setViewpointGeometry(coloradoGraphic.geometry!, padding: 100)
+        // Clip Colorado's geometry to each envelope.
+        let clippedGraphics: [AGSGraphic] = envelopesGraphicsOverlay.graphics.map { graphic in
+            let envelope = (graphic as! AGSGraphic).geometry as! AGSEnvelope
+            // Use the geometry engine to create a new geometry for the area of
+            // Colorado that overlaps the given envelope.
+            let clippedGeometry = AGSGeometryEngine.clipGeometry(coloradoGeometry, with: envelope)
+            // Create and return the clipped graphic from the clipped geometry
+            // if there is an overlap.
+            return AGSGraphic(geometry: clippedGeometry, symbol: coloradoSymbol)
+        }
+        // Add the clipped graphics.
+        clippedGraphicsOverlay.graphics.addObjects(from: clippedGraphics)
+    }
+    
+    /// Remove all clipped graphics.
+    private func reset() {
+        clippedGraphicsOverlay.graphics.removeAllObjects()
+        coloradoGraphic.isVisible = true
     }
     
     @IBAction func clipGeometry(_ sender: UIBarButtonItem) {
-        // disable the clip button
-        sender.isEnabled = false
-        
-        // hide the Colorado graphic
-        coloradoGraphic.isVisible = false
-        
-        guard let coloradoGeometry = coloradoGraphic.geometry,
-            let coloradoSymbol = coloradoGraphic.symbol else {
-            return
-        }
-        
-        for envelopeGraphic in envelopesOverlay.graphics as! [AGSGraphic] {
-            if let envelope = envelopeGraphic.geometry as? AGSEnvelope,
-                // use the geometry engine to get a new geometry for the area of Colorado that overlaps the envelope
-                let clippedGeometry = AGSGeometryEngine.clipGeometry(coloradoGeometry, with: envelope) {
-                // if there is an overlap, greate a graphic for it using the same symbol as Colorado
-                let clippedGraphic = AGSGraphic(geometry: clippedGeometry, symbol: coloradoSymbol)
-                // add the resultant graphic to the overlay
-                coloradoOverlay.graphics.add(clippedGraphic)
-            }
-        }
+        geometriesAreClipped ? reset() : clipGeometries()
+        geometriesAreClipped.toggle()
+        // Set button title based on whether the geometries are clipped.
+        sender.title = geometriesAreClipped ? "Reset" : "Clip"
+    }
+    
+    // MARK: UIViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Add the source code button item to the right of navigation bar.
+        (navigationItem.rightBarButtonItem as! SourceCodeBarButtonItem).filenames = ["ClipGeometryViewController"]
     }
 }

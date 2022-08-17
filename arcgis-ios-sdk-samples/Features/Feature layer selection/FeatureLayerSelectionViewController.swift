@@ -37,11 +37,13 @@ class FeatureLayerSelectionViewController: UIViewController {
     
     /// The feature layer created from a feature service.
     let featureLayer: AGSFeatureLayer = {
-        // Create feature table using a url.
-        let featureServiceURL = URL(string: "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/GDP_per_capita_1960_2016/FeatureServer/0")!
-        let featureTable = AGSServiceFeatureTable(url: featureServiceURL)
-        // Create feature layer using this feature table.
-        let featureLayer = AGSFeatureLayer(featureTable: featureTable)
+        // A feature layer visualizing GDP per capita.
+        let featureLayer = AGSFeatureLayer(
+            item: AGSPortalItem(
+                portal: .arcGISOnline(withLoginRequired: false),
+                itemID: "10d76a5b015647279b165f3a64c2524f"
+            )
+        )
         return featureLayer
     }()
     

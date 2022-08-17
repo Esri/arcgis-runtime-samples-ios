@@ -58,17 +58,8 @@ class ShowDeviceLocationUsingIndoorPositioningViewController: UIViewController {
     
     /// Load an IPS-enabled web map from a portal.
     func makeMap() -> AGSMap {
-        // Temporarily unset the API key for this sample.
-        AGSArcGISRuntimeEnvironment.apiKey = ""
-        
-        // The portal that hosts the IPS-enabled map.
-        let portal = AGSPortal(url: URL(string: "https://viennardc.maps.arcgis.com")!, loginRequired: true)
-        // WARNING: Never hardcode login information in a production application.
-        // This is done solely for the sake of the sample.
-        let credential = AGSCredential(user: "tester_viennardc", password: "password.testing12345")
-        portal.credential = credential
         // A floor-aware, IPS-enabled web map for floors of Esri Building L in Redlands.
-        let map = AGSMap(item: AGSPortalItem(portal: portal, itemID: "89f88764c29b48218366855d7717d266"))
+        let map = AGSMap(item: AGSPortalItem(portal: .arcGISOnline(withLoginRequired: false), itemID: "8fa941613b4b4b2b8a34ad4cdc3e4bba"))
         map.load { [weak self] error in
             if let error = error {
                 self?.presentAlert(error: error)
@@ -258,7 +249,7 @@ extension ShowDeviceLocationUsingIndoorPositioningViewController: AGSLocationCha
                 let satelliteCount = location.additionalSourceProperties[.satelliteCount] as? Int ?? 0
                 return String(format: "%d satellite(s)", satelliteCount)
             default:
-                let transmitterCount = location.additionalSourceProperties[AGSLocationSourcePropertyKey("transmitterCount")] as? Int ?? 0
+                let transmitterCount = location.additionalSourceProperties[.transmitterCount] as? Int ?? 0
                 return String(format: "%d beacon(s)", transmitterCount)
             }
         }()

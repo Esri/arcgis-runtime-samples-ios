@@ -5848,7 +5848,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.14.0;
+				MARKETING_VERSION = 100.15.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -5879,7 +5879,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.14.0;
+				MARKETING_VERSION = 100.145.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -5989,7 +5989,7 @@
 			repositoryURL = "https://github.com/Esri/arcgis-runtime-toolkit-ios";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 100.14.0;
+				minimumVersion = 100.15.0;
 			};
 		};
 		00BE7B36275AEFD60012CE95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

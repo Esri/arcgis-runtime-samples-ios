@@ -101,7 +101,7 @@ extension ViewshedLocationViewController: AGSGeoViewTouchDelegate {
     
     func geoView(_ geoView: AGSGeoView, didTouchDownAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint, completion: @escaping (Bool) -> Void) {
         // tell the ArcGIS Runtime if we are going to handle interaction
-        canMoveViewshed ? completion(true) : completion(false)
+        completion(canMoveViewshed)
     }
     
     func geoView(_ geoView: AGSGeoView, didTouchDragToScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {

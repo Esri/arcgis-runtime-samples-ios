@@ -23,7 +23,7 @@ class BookmarksListViewController: UITableViewController {
     private var selectAction: ((AGSViewpoint) -> Void)?
     
     // executed for tableview row selection
-    func setSelectAction(_ action : @escaping ((AGSViewpoint) -> Void)) {
+    func setSelectAction(_ action: @escaping ((AGSViewpoint) -> Void)) {
         self.selectAction = action
     }
     

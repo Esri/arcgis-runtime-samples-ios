@@ -149,7 +149,11 @@ class ClipGeometryViewController: UIViewController {
     }
     
     @IBAction func clipGeometry(_ sender: UIBarButtonItem) {
-        geometriesAreClipped ? reset() : clipGeometries()
+        if geometriesAreClipped {
+            reset()
+        } else {
+            clipGeometries()
+        }
         geometriesAreClipped.toggle()
         // Set button title based on whether the geometries are clipped.
         sender.title = geometriesAreClipped ? "Reset" : "Clip"

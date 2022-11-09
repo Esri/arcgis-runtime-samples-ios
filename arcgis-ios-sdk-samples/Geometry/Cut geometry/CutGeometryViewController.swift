@@ -156,7 +156,11 @@ class CutGeometryViewController: UIViewController {
     }
     
     @IBAction func cutGeometryWithPolyline(_ sender: UIBarButtonItem) {
-        isGeometryCut ? reset() : cutGeometry()
+        if isGeometryCut {
+            reset()
+        } else {
+            cutGeometry()
+        }
         isGeometryCut.toggle()
         // Set button title based on whether the geometry is cut.
         sender.title = isGeometryCut ? "Reset" : "Cut"

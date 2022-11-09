@@ -60,7 +60,7 @@ class ViewHiddenInfrastructureARCalibrationViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // Only make space for the elevation slider when in "Local" mode.
-        preferredContentSize = CGSize(width: 250, height: isLocal ? 96: 48)
+        preferredContentSize = CGSize(width: 250, height: isLocal ? 96 : 48)
         
         // Add the heading label and slider.
         let headingLabel = UILabel()

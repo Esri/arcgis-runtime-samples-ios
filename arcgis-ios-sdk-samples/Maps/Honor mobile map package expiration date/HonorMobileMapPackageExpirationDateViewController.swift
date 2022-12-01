@@ -18,7 +18,7 @@ import UIKit
 import ArcGIS
 
 /// A view controller that manages the interface of the Honor Mobile Map Package
-// Expiration Date sample.
+/// Expiration Date sample.
 class HonorMobileMapPackageExpirationDateViewController: UIViewController {
     /// The map view managed by the view controller.
     @IBOutlet weak var mapView: AGSMapView! {

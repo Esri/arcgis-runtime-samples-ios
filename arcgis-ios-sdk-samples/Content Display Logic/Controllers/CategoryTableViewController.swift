@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import UIKit
+import Firebase
 
 class CategoryTableViewController: UITableViewController {
     /// The samples to display in the table. Searching adjusts this value
@@ -29,7 +30,7 @@ class CategoryTableViewController: UITableViewController {
             displayedSamples = allSamples
         }
     }
-
+    
     var searchEngine: SampleSearchEngine?
     /// Tracks whether or not it is the favorites category.
     var isFavoritesCategory = false
@@ -90,6 +91,11 @@ class CategoryTableViewController: UITableViewController {
     /// Responds to the selected sample being changed.
     private func selectedSampleDidChange() {
         if let sample = selectedSample {
+            // Google Analytics select sample event.
+            Analytics.logEvent("select_sample", parameters: [
+                AnalyticsParameterContentType: sample.name
+            ])
+            
             let indexPathForSample = indexPath(for: sample)
             if tableView.indexPathForSelectedRow != indexPathForSample {
                 tableView.selectRow(at: indexPathForSample, animated: true, scrollPosition: .top)
@@ -202,7 +208,18 @@ class CategoryTableViewController: UITableViewController {
         
         // Must use the presenting controller when opening from search results or else splitViewController will be nil.
         let presentingController: UIViewController? = searchEngine != nil ? presentingViewController : self
-            
+        
+        // If the sample is selected from search results, log the search term.
+        if let searchController = presentingViewController?.navigationItem.searchController,
+           searchController.isActive,
+           let searchTerm = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !searchTerm.isEmpty {
+            // Google Analytics search event.
+            Analytics.logEvent(AnalyticsEventSearch, parameters: [
+                AnalyticsParameterSearchTerm: searchTerm
+            ])
+        }
+        
         let navController = UINavigationController(rootViewController: controller)
         
         // Don't use large titles on samples.
@@ -261,8 +278,8 @@ extension CategoryTableViewController: UISearchResultsUpdating {
         expandedRowIndexPaths.removeAll()
         
         if searchController.isActive,
-            let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !query.isEmpty {
+           let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !query.isEmpty {
             displayedSamples = searchEngine.sortedSamples(matching: query)
         } else {
             displayedSamples = allSamples

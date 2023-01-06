@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import UIKit
+import Firebase
 
 class CategoriesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet private var collectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -98,12 +99,17 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
         let category = categories[indexPath.item]
         let controller = storyboard!.instantiateViewController(withIdentifier: "CategoryTableViewController") as! CategoryTableViewController
         controller.title = category.name
+        
         // Filter and display the favorited samples.
         if category.name == "Favorites" {
             controller.allSamples = categories
                 .flatMap { $0.samples.filter(\.isFavorite) }
             controller.isFavoritesCategory = true
         } else {
+            // Google Analytics select category event.
+            Analytics.logEvent("select_category", parameters: [
+                AnalyticsParameterContentType: category.name
+            ])
             // Otherwise, show all samples.
             controller.allSamples = category.samples
         }

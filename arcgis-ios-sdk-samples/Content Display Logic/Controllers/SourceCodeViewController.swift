@@ -14,6 +14,7 @@
 
 import UIKit
 import WebKit
+import Firebase
 
 class SourceCodeViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     /// The view to which the web view is added.
@@ -56,6 +57,11 @@ class SourceCodeViewController: UIViewController, UIAdaptivePresentationControll
             setupToolbarTitle(filename, arrowPointingDown: true)
             let htmlString = htmlStringForContent(content)
             webView.loadHTMLString(htmlString, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+            
+            // Google Analytics select code file event.
+            Analytics.logEvent("select_sourcefile", parameters: [
+                AnalyticsParameterContentType: filename
+            ])
         }
     }
     

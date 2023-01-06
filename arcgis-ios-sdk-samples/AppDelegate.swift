@@ -14,6 +14,7 @@
 
 import UIKit
 import ArcGIS
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -47,6 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         // Enable/disable touches based on settings.
         self.setTouchPref()
+        
+        // Set up Google Analytics 4.
+        self.setGoogleAnalyticsPref()
         
         // Set license key and/or API key.
         application.license()
@@ -91,6 +95,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             DemoTouchManager.shared.touchFillColor = UIColor(white: 231 / 255.0, alpha: 1)
         } else {
             DemoTouchManager.shared.hideTouches()
+        }
+    }
+    
+    // MARK: - Google Analytics settings
+    
+    func setGoogleAnalyticsPref() {
+        // Enable/disable GA based on settings.
+        let disableGoogleAnalytics = UserDefaults.standard.bool(forKey: "disableGoogleAnalytics")
+        if !disableGoogleAnalytics {
+            FirebaseApp.configure()
         }
     }
     

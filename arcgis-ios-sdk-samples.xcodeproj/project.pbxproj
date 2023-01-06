@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0005580F2819C75700224BC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0005580E2819C75600224BC6 /* GoogleService-Info.plist */; };
 		00069C77241C3B3B00FEE0EC /* ConvexHullViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00D4E8DB241AA18E002689DB /* ConvexHullViewController.swift */; };
 		000FFFB426CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */; };
 		000FFFB626CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */; };
@@ -103,6 +104,7 @@
 		00ADC3D12464DD3600A3B88D /* IdentifyRasterCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00ADC3D22464DDA200A3B88D /* IdentifyRasterCellViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00ADC3D02464DD3600A3B88D /* IdentifyRasterCellViewController.swift */; };
 		00BA068525311B0D0039EF4D /* hydrography in Resources */ = {isa = PBXBuildFile; fileRef = 00BA068325311B0D0039EF4D /* hydrography */; settings = {ASSET_TAGS = (Hydrography, ); }; };
+		00BE7B38275AEFD60012CE95 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 00BE7B37275AEFD60012CE95 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		00BE7B3E2764274C0012CE95 /* BrowseBuildingFloors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00BE7B3D2764274C0012CE95 /* BrowseBuildingFloors.storyboard */; };
 		00BE7B402764275D0012CE95 /* BrowseBuildingFloorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */; };
 		00BE7B4127642A6C0012CE95 /* BrowseBuildingFloorsViewController.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00BE7B3F2764275D0012CE95 /* BrowseBuildingFloorsViewController.swift */; };
@@ -1281,6 +1283,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0005580E2819C75600224BC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		000FFFB326CB043200E3CE7E /* SetUpLocationDrivenGeotriggers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetUpLocationDrivenGeotriggers.storyboard; sourceTree = "<group>"; };
 		000FFFB526CB044700E3CE7E /* SetUpLocationDrivenGeotriggersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpLocationDrivenGeotriggersViewController.swift; sourceTree = "<group>"; };
 		00132100279B704200E89DD4 /* ShowDeviceLocationUsingIndoorPositioning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDeviceLocationUsingIndoorPositioning.storyboard; sourceTree = "<group>"; };
@@ -1928,6 +1931,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				006A786A262F9F15001D2A5E /* ArcGISToolkit in Frameworks */,
+				00BE7B38275AEFD60012CE95 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2591,6 +2595,7 @@
 				C7E86C8E21751CFE001C65C3 /* Extensions */,
 				3E23AA071AFC2DE0002E2214 /* Content Display Logic */,
 				3E23A9E41AFC28F6002E2214 /* Info.plist */,
+				0005580E2819C75600224BC6 /* GoogleService-Info.plist */,
 			);
 			path = "arcgis-ios-sdk-samples";
 			sourceTree = "<group>";
@@ -4850,6 +4855,7 @@
 			name = "ArcGIS Runtime SDK Samples";
 			packageProductDependencies = (
 				006A7869262F9F15001D2A5E /* ArcGISToolkit */,
+				00BE7B37275AEFD60012CE95 /* FirebaseAnalyticsWithoutAdIdSupport */,
 			);
 			productName = "arcgis-ios-sdk-samples";
 			productReference = 3E23A9E01AFC28F6002E2214 /* ArcGIS Runtime SDK Samples.app */;
@@ -4949,6 +4955,7 @@
 			mainGroup = 3E23A9D71AFC28F6002E2214;
 			packageReferences = (
 				006A7868262F9F15001D2A5E /* XCRemoteSwiftPackageReference "arcgis-runtime-toolkit-ios" */,
+				00BE7B36275AEFD60012CE95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3E23A9E11AFC28F6002E2214 /* Products */;
 			projectDirPath = "";
@@ -4993,6 +5000,7 @@
 				F1F62C4422E65E0900EFD599 /* militaryoverlay.geodatabase in Resources */,
 				3EBA254A1D300FB500AB0703 /* SimpleRenderer.storyboard in Resources */,
 				0083AA192628ED18003A28C8 /* ProgressViewController.xib in Resources */,
+				0005580F2819C75700224BC6 /* GoogleService-Info.plist in Resources */,
 				D97B7E5F1FD9BFE700E1239D /* Subdivisions.cpg in Resources */,
 				F1EF67DD27E2AE480049FA9A /* QueryRelatedFeaturesNonSpatialTable.storyboard in Resources */,
 				3ED028B81B8E3A9800ACA70D /* SublayerVisibility.storyboard in Resources */,
@@ -5841,8 +5849,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 100.15.0;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.esri.iOSSamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5868,9 +5879,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 100.15.0;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.esri.arcgis-ios-sdk-samples";
+				MARKETING_VERSION = 100.145.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.esri.iOSSamples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5978,6 +5992,14 @@
 				minimumVersion = 100.15.0;
 			};
 		};
+		00BE7B36275AEFD60012CE95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.10.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -5985,6 +6007,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 006A7868262F9F15001D2A5E /* XCRemoteSwiftPackageReference "arcgis-runtime-toolkit-ios" */;
 			productName = ArcGISToolkit;
+		};
+		00BE7B37275AEFD60012CE95 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00BE7B36275AEFD60012CE95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
